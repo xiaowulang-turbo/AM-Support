@@ -107,3 +107,185 @@
     "https://data.processwebsitedata.com/cscripts/Ak1cpWKVN9-65ea13a5.js";
   document.body.appendChild(script);
 })();
+//
+
+// let a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 2, 2, 2, 7];
+
+// let b = [];
+// a.forEach((arr) => {
+//   if (arr !== b[b.length - 1]) {
+//     b.push(arr);
+//   }
+// });
+
+// console.log(b);
+
+//AM-405132 xiaowu.ruan 2024.03.06
+/*
+(function (w, i, d, g, e, t) {
+  w["WidgetTrackerObject"] = g;
+  (w[g] =
+    w[g] ||
+    function () {
+      (w[g].q = w[g].q || []).push(arguments);
+    }),
+    (w[g].ds = 1 * new Date());
+  (e = "script"), (t = d.createElement(e)), (e = d.getElementsByTagName(e)[0]);
+  t.async = 1;
+  t.src = i;
+  e.parentNode.insertBefore(t, e);
+})(window, "https://widgetbe.com/agent", document, "widgetTracker");
+window.widgetTracker("create", "WT-HABWHLKG");
+window.widgetTracker("send", "pageview");
+*/
+
+const object1 = {
+  name: "John",
+  lastname: "Doe",
+};
+
+console.log(object1);
+console.log(object1.name);
+console.log(object1["name"]);
+const object2 = new Object();
+object2.name = "John";
+object2.lastname = "Doe";
+console.log(object2);
+
+const logoSvg = document.querySelector(".logo-svg");
+let rotationAngle = 90;
+
+logoSvg.addEventListener("click", () => {
+  console.log("click");
+  logoSvg.style.transform = `rotate(${rotationAngle}deg)`;
+  rotationAngle += 90;
+  rotationAngle %= 360;
+});
+
+// AM-410242 xiaowu.ruan 2024.04.16
+export default {
+  mounted() {
+    let col = document.querySelectorAll(
+      ".md-vendor .vendor-general-base .col"
+    )[0];
+    Util.getAsyncDom({
+      selector: ".md-vendor .vendor-general-base .col .title",
+      all: true,
+    }).then((res) => {
+      let resSym = [];
+      res.forEach((item) => {
+        if (item.firstChild.data.match(/[^A-Z]/g)) resSym.push(item);
+      });
+      if (resSym.length > 0) {
+        for (let i = 0; i < resSym.length; i++) {
+          let currentElement = resSym[i].nextElementSibling;
+          while (!currentElement.classList.contains("title")) {
+            col.insertBefore(currentElement, col.firstChild);
+            currentElement = currentElement.nextElementSibling;
+          }
+          col.insertBefore(resSym[i], col.firstChild);
+        }
+      }
+    });
+  },
+};
+// AM-411193 xiaowu.ruan 2024.03.26
+(function () {
+  function loadScript(a) {
+    var b = document.getElementsByTagName("head")[0],
+      c = document.createElement("script");
+    (c.type = "text/javascript"),
+      (c.src = "https://tracker.metricool.com/resources/be.js"),
+      (c.onreadystatechange = a),
+      (c.onload = a),
+      b.appendChild(c);
+  }
+
+  loadScript(function () {
+    beTracker.t({
+      hash: "267b35d0dd1e104d3144c0cc24becbc0",
+    });
+  });
+})();
+
+// AM-411193 xiaowu.ruan 2024.04.16
+(function () {
+  function loadScript(a) {
+    var b = document.getElementsByTagName("head")[0],
+      c = document.createElement("script");
+    (c.type = "text/javascript"),
+      (c.src = "https://tracker.metricool.com/resources/be.js"),
+      (c.onreadystatechange = a),
+      (c.onload = a),
+      b.appendChild(c);
+  }
+  loadScript(function () {
+    beTracker.t({
+      hash: "267b35d0dd1e104d3144c0cc24becbc0",
+    });
+  });
+})();
+
+// AM-423221 xiaowu.ruan 2024.04.16
+(function () {
+  if (window.location.href.indexOf("melissawatson") > 0) {
+    const style = document.createElement("style");
+    style.textContent = `
+        body .md-team-desc.template6 .team-desc-content { width: 1200px; }
+        body .md-team-desc.template6 .team-desc-content .description { width: 45%; }
+        body .md-team-desc.template6 .team-desc-content .description .view-more-container {
+            overflow: visible;
+        }
+    `;
+    document.body.appendChild(style);
+  }
+})();
+
+// AM-427043 xiaowu.ruan 2024.04.16
+(function () {
+  (function (w, i, d, g, e, t) {
+    w["WidgetTrackerObject"] = g;
+    (w[g] =
+      w[g] ||
+      function () {
+        (w[g].q = w[g].q || []).push(arguments);
+      }),
+      (w[g].ds = 1 * new Date());
+    (e = "script"),
+      (t = d.createElement(e)),
+      (e = d.getElementsByTagName(e)[0]);
+    t.async = 1;
+    t.src = i;
+    e.parentNode.insertBefore(t, e);
+  })(window, "https://widgetbe.com/agent", document, "widgetTracker");
+  window.widgetTracker("create", "WT-LRQLGYPK");
+  window.widgetTracker("send", "pageview");
+})();
+
+/*
+(function() {
+gtag('config', 'AW-11064546780');
+gtag('event', 'conversion',
+{ "vars": { "gtag_id": "AW-10832171189", "config": { "AW-10832171189":
+{ "groups": "default" }
+} }, "triggers": { } }
+"AW-11064546780":
+{ "groups": "default" }
+"C_DGot3NIvLPA": { "on": "visible", "vars":
+
+{ "event_name": "conversion", "send_to": ["AW-11064546780/BlrECOHQ9qIZENyr_psp"] }
+}
+{ "on": "visible", "vars":
+
+{ "event_name": "conversion", "send_to": ["AW-11064546780/BlrECOHQ9qIZENyr_psp"] }
+}
+})();
+*/
+
+// AM-423675 xiaowu.ruan 2024.04.17
+(function () {
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "https://stats.egumball.com/?key=pjmrsmdxm324fju4u5thz2we";
+  document.head.appendChild(script);
+});
