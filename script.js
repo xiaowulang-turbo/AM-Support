@@ -376,3 +376,29 @@ gtag('event', 'conversion',
       v-html="formatFontSize(footerAgentCustomContent)"></div>
 </template>
 */
+
+// AM-428953 xiaowu.ruan 2024.04.24
+(function () {
+  if (window.location.href.indexOf("mothersday") > -1) {
+    const style = document.createElement("style");
+    style.textContent = `
+     body .md-form.column .img-container {
+      height: 200px;
+     }
+    `;
+    document.head.appendChild(style);
+  }
+})();
+
+// AM-428758 xiaowu.ruan 2024.04.24
+/* <div class="custom-img-box">
+<a href="https://www.homelight.com/agents/james-sharp-tx-0491432?preview=t" target="_blank">
+  <img class="myImg" src="https://cdn.chime.me/image/fs/sitebuild/2021310/2/original_3a1d8579-cd43-47c4-8da6-3a8b5da3f89e.png" style="cursor:pointer;"/>
+</a>
+  <img src="https://static.chimeroi.com/servicetool-temp/DallasHomeSearch.jpeg" style="margin-left:20px;width:200px"/>
+<!--taoxueyun-AM340311-2023.06.30
+<a href="https://www.sellwhenever.com/agents/james-sharp/?utm_source=clear_channel_ooh&utm_medium=billboards&utm_campaign=sellwhenever_df" target="_blank">
+  <img src="https://cdn.chime.me/image/fs/sitebuild/2021829/22/original_c4ecba79-6d74-473c-865f-5c8308c54afb.png" style="cursor:pointer;margin-left:20px;width:200px;height:200px;background:#fff;padding:0 10px;object-fit:contain;" />
+  </a>
+-->
+</div> */
