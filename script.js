@@ -282,3 +282,90 @@ gtag('event', 'conversion',
   script.src = "https://stats.egumball.com/?key=pjmrsmdxm324fju4u5thz2we";
   document.head.appendChild(script);
 });
+
+// AM-411483 xiaowu.ruan 2024.04.19
+(function () {
+  const script = document.createElement("script");
+  script.src =
+    "https://data.processwebsitedata.com/cscripts/Ak1cpWKVN9-65ea13a5.js";
+  document.body.appendChild(script);
+})();
+
+// Code below was inserted by the client before, and I made it wrapped to make it work.
+(function () {
+  window.vs_account_id = "fwABAVysqPQxiQBS";
+  window.Util.addScript("https://rw1.calls.net/euinc/number-changer.js");
+
+  siteAxios.interceptors.response.use(function (res) {
+    let a = res && res.listings;
+    let b = res && res.searchType;
+
+    if (a) {
+      if (b == "sold") {
+        console.log(a);
+      }
+    }
+    return res;
+  });
+
+  var s;
+
+  let time = setInterval(() => {
+    s = document.querySelector(".update-time");
+    if (s) {
+      var s1 = document.querySelectorAll(".info-title");
+      var s2 = document.querySelectorAll(".info-data");
+      for (i = 0; i < s1.length; i++) {
+        if (s1[i].innerHTML == "Sold Date") {
+          console.log(s1[i].innerHTML);
+          console.log(s2[i].innerHTML);
+          s.innerHTML = "SOLD DATE : " + s2[i].innerHTML;
+        }
+      }
+      clearInterval(time);
+    }
+  }, 1000);
+})();
+
+//
+
+/*
+<template v-if="subOwnerInfo">
+    <p class="md-footer__agent-info lh">
+        <span v-if="
+            !!subOwnerInfo.firstName ||
+            !!subOwnerInfo.lastName
+        " class="info-name" :style="useAgentNameStyle"> {{ subOwnerInfo.firstName || '' }} {{ subOwnerInfo.lastName ||
+                '' }} </span>
+    </p>
+    <p class="md-footer__agent-info lh">
+        <span v-if="!!subOwnerInfo.phone" class="info-phone mr-20" :style="useAgentPhoneStyle">
+            <a :href="'tel:' + subOwnerInfo.phone" target="_top" rel="noopener noreferrer"> {{ $ft.formatPhone(subOwnerInfo.phone) }} </a>
+        </span>
+        <span v-if="!!subOwnerInfo.email" class="info-email" :style="useAgentEmailStyle">
+            <a :href="'mailto:' + subOwnerInfo.email" rel="noopener noreferrer"> {{ subOwnerInfo.email }} </a>
+        </span>
+    </p>
+</template>
+<template v-if="getAddressInfo">
+    <!--<div class="co-address lh"
+        :style="useBroAddrStyle"
+        v-html="getAddressInfo"></div>-->
+    <!--
+    <div class="co-address lh" :style="useBroAddrStyle">
+        <p style="font-weight:600;">Orlando FL Office</p>
+        <p>20 N. Orange Ave. Suite 1100 Orlando FL 32801</p>
+        <p style="font-weight:600;margin-top:10px;">Plantation FL Office</p>
+        <p>150 S. Pine Island Rd, Suite 300 Plantation FL 33324</p>
+        <p style="font-weight:600;margin-top:10px;">Viera/Melbourne FL Office</p>
+        <p>140 Interlachen Rd Suite A, Melbourne, Florida 32940</p>
+    </div>
+    -->
+</template>
+<template v-if="footerAgentCustomContent">
+  <div 
+      class="custom-content"  
+      :style="{ color: fontColor }" 
+      v-html="formatFontSize(footerAgentCustomContent)"></div>
+</template>
+*/
