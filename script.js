@@ -402,3 +402,77 @@ gtag('event', 'conversion',
   </a>
 -->
 </div> */
+
+// AM-411483 xiaowu.ruan 2024.04.19
+(function () {
+  const script = document.createElement("script");
+  script.src =
+    "https://data.processwebsitedata.com/cscripts/Ak1cpWKVN9-65ea13a5.js";
+  document.body.appendChild(script);
+})();
+(function () {
+  window.vs_account_id = "fwABAVysqPQxiQBS";
+  window.Util.addScript("https://rw1.calls.net/euinc/number-changer.js");
+  Util.addScript("https://cdn.userway.org/widget.js");
+  let a = document.getElementsByTagName("script");
+  for (let i = 0; i < a.length; i++) {
+    if (a[i].src == "https://cdn.userway.org/widget.js") {
+      a[i].setAttribute("data-account", "C7KubQfK53");
+    }
+  }
+  if (sitePrepareData().pageKey == "listing-detail-sold") {
+    var s;
+    let time = setInterval(() => {
+      s = document.querySelector(".update-time");
+      if (s) {
+        var s1 = document.querySelectorAll(".info-title");
+        var s2 = document.querySelectorAll(".info-data");
+        for (i = 0; i < s1.length; i++) {
+          if (s1[i].innerHTML == "Sold Date") {
+            console.log(s1[i].innerHTML);
+            console.log(s2[i].innerHTML);
+            s.innerHTML = "SOLD DATE : " + s2[i].innerHTML;
+          }
+        }
+        clearInterval(time);
+      }
+    }, 1000);
+  }
+
+  const subDomain = {
+    "andrewdinuccio.todayrealestate.com":
+      "https://pixel.adwerx.com/todayrealestate/andrew@todayrealestate.com/awp.js",
+    "michelelejeune.todayrealestate.com":
+      "https://pixel.adwerx.com/todayrealestate/michele@todayrealestate.com/awp.js",
+    "seanamcaleer.todayrealestate.com":
+      "https://pixel.adwerx.com/todayrealestate/sena@todayrealestate.com/awp.js",
+  };
+  let jsUrl = subDomain[window.location.hostname];
+  if (jsUrl && sitePageJSON.page == "home") {
+    let res = document.createElement("script");
+    res.src = jsUrl;
+    res.async = "async";
+    document.querySelector("head").appendChild(res);
+  }
+
+  console.log(jsUrl);
+})();
+
+// AM-423908 xiaowu.ruan 2024.04.26
+(function () {
+  (function (e) {
+    if (!window.pintrk) {
+      window.pintrk = function () {
+        window.pintrk.queue.push(Array.prototype.slice.call(arguments));
+      };
+      var n = window.pintrk;
+      (n.queue = []), (n.version = "3.0");
+      var t = document.createElement("script");
+      (t.async = !0), (t.src = e);
+      var r = document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t, r);
+    }
+  })("https://s.pinimg.com/ct/core.js");
+  pintrk("load", "2614161900789", { em: "<user_email_address>" });
+  pintrk("page");
+})();
