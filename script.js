@@ -488,3 +488,45 @@ export default {
     });
   },
 };
+
+/*
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+function() { 
+Calendly.initBadgeWidget(
+{ url: 'https://calendly.com/realtor_dinamorales/45min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined }
+)
+}
+*/
+
+(function () {
+  const link = document.createElement("link");
+  link.href = "https://assets.calendly.com/assets/external/widget.css";
+  link.rel = "stylesheet";
+  document.head.appendChild(link);
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  document.body.appendChild(script);
+  const script2 = document.createElement("script");
+  script2.innerHTML = `function() { Calendly.initBadgeWidget( { url: 'https://calendly.com/realtor_dinamorales/45min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined } ) }`;
+  document.body.appendChild(script2);
+})();
+
+// AM-430141 xiaowu.ruan 2024.04.30
+(function () {
+  const link = document.createElement("link");
+  link.href = "https://assets.calendly.com/assets/external/widget.css";
+  link.rel = "stylesheet";
+  document.head.appendChild(link);
+
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  script.onload = function () {
+    // 确保脚本加载完成后再初始化Calendly小部件
+    const script2 = document.createElement("script");
+    script2.innerHTML = `window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/realtor_dinamorales/45min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined }) }`;
+    document.body.appendChild(script2);
+  };
+  document.body.appendChild(script);
+})();
