@@ -163,32 +163,32 @@ logoSvg.addEventListener("click", () => {
 });
 
 // AM-410242 xiaowu.ruan 2024.04.16
-export default {
-  mounted() {
-    let col = document.querySelectorAll(
-      ".md-vendor .vendor-general-base .col"
-    )[0];
-    Util.getAsyncDom({
-      selector: ".md-vendor .vendor-general-base .col .title",
-      all: true,
-    }).then((res) => {
-      let resSym = [];
-      res.forEach((item) => {
-        if (item.firstChild.data.match(/[^A-Z]/g)) resSym.push(item);
-      });
-      if (resSym.length > 0) {
-        for (let i = 0; i < resSym.length; i++) {
-          let currentElement = resSym[i].nextElementSibling;
-          while (!currentElement.classList.contains("title")) {
-            col.insertBefore(currentElement, col.firstChild);
-            currentElement = currentElement.nextElementSibling;
-          }
-          col.insertBefore(resSym[i], col.firstChild);
-        }
-      }
-    });
-  },
-};
+// export default {
+//   mounted() {
+//     let col = document.querySelectorAll(
+//       ".md-vendor .vendor-general-base .col"
+//     )[0];
+//     Util.getAsyncDom({
+//       selector: ".md-vendor .vendor-general-base .col .title",
+//       all: true,
+//     }).then((res) => {
+//       let resSym = [];
+//       res.forEach((item) => {
+//         if (item.firstChild.data.match(/[^A-Z]/g)) resSym.push(item);
+//       });
+//       if (resSym.length > 0) {
+//         for (let i = 0; i < resSym.length; i++) {
+//           let currentElement = resSym[i].nextElementSibling;
+//           while (!currentElement.classList.contains("title")) {
+//             col.insertBefore(currentElement, col.firstChild);
+//             currentElement = currentElement.nextElementSibling;
+//           }
+//           col.insertBefore(resSym[i], col.firstChild);
+//         }
+//       }
+//     });
+//   },
+// };
 // AM-411193 xiaowu.ruan 2024.03.26
 (function () {
   function loadScript(a) {
@@ -476,3 +476,15 @@ gtag('event', 'conversion',
   pintrk("load", "2614161900789", { em: "<user_email_address>" });
   pintrk("page");
 })();
+
+// AM-425741 xiaowu.ruan 2024.04.30
+export default {
+  mounted() {
+    Util.getAsyncDom({
+      selector: "body .info.template5 .desc h2",
+      all: false,
+    }).then((res) => {
+      console.log(res);
+    });
+  },
+};
