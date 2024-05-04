@@ -163,32 +163,32 @@ logoSvg.addEventListener("click", () => {
 });
 
 // AM-410242 xiaowu.ruan 2024.04.16
-export default {
-  mounted() {
-    let col = document.querySelectorAll(
-      ".md-vendor .vendor-general-base .col"
-    )[0];
-    Util.getAsyncDom({
-      selector: ".md-vendor .vendor-general-base .col .title",
-      all: true,
-    }).then((res) => {
-      let resSym = [];
-      res.forEach((item) => {
-        if (item.firstChild.data.match(/[^A-Z]/g)) resSym.push(item);
-      });
-      if (resSym.length > 0) {
-        for (let i = 0; i < resSym.length; i++) {
-          let currentElement = resSym[i].nextElementSibling;
-          while (!currentElement.classList.contains("title")) {
-            col.insertBefore(currentElement, col.firstChild);
-            currentElement = currentElement.nextElementSibling;
-          }
-          col.insertBefore(resSym[i], col.firstChild);
-        }
-      }
-    });
-  },
-};
+// export default {
+//   mounted() {
+//     let col = document.querySelectorAll(
+//       ".md-vendor .vendor-general-base .col"
+//     )[0];
+//     Util.getAsyncDom({
+//       selector: ".md-vendor .vendor-general-base .col .title",
+//       all: true,
+//     }).then((res) => {
+//       let resSym = [];
+//       res.forEach((item) => {
+//         if (item.firstChild.data.match(/[^A-Z]/g)) resSym.push(item);
+//       });
+//       if (resSym.length > 0) {
+//         for (let i = 0; i < resSym.length; i++) {
+//           let currentElement = resSym[i].nextElementSibling;
+//           while (!currentElement.classList.contains("title")) {
+//             col.insertBefore(currentElement, col.firstChild);
+//             currentElement = currentElement.nextElementSibling;
+//           }
+//           col.insertBefore(resSym[i], col.firstChild);
+//         }
+//       }
+//     });
+//   },
+// };
 // AM-411193 xiaowu.ruan 2024.03.26
 (function () {
   function loadScript(a) {
@@ -475,4 +475,58 @@ gtag('event', 'conversion',
   })("https://s.pinimg.com/ct/core.js");
   pintrk("load", "2614161900789", { em: "<user_email_address>" });
   pintrk("page");
+})();
+
+// AM-425741 xiaowu.ruan 2024.04.30
+export default {
+  mounted() {
+    Util.getAsyncDom({
+      selector: "body .info.template5 .desc h2",
+      all: false,
+    }).then((res) => {
+      console.log(res);
+    });
+  },
+};
+
+/*
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+function() { 
+Calendly.initBadgeWidget(
+{ url: 'https://calendly.com/realtor_dinamorales/45min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined }
+)
+}
+*/
+
+(function () {
+  const link = document.createElement("link");
+  link.href = "https://assets.calendly.com/assets/external/widget.css";
+  link.rel = "stylesheet";
+  document.head.appendChild(link);
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  document.body.appendChild(script);
+  const script2 = document.createElement("script");
+  script2.innerHTML = `function() { Calendly.initBadgeWidget( { url: 'https://calendly.com/realtor_dinamorales/45min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined } ) }`;
+  document.body.appendChild(script2);
+})();
+
+// AM-430141 xiaowu.ruan 2024.04.30
+(function () {
+  const link = document.createElement("link");
+  link.href = "https://assets.calendly.com/assets/external/widget.css";
+  link.rel = "stylesheet";
+  document.head.appendChild(link);
+
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  script.onload = function () {
+    // 确保脚本加载完成后再初始化Calendly小部件
+    const script2 = document.createElement("script");
+    script2.innerHTML = `window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/realtor_dinamorales/45min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined }) }`;
+    document.body.appendChild(script2);
+  };
+  document.body.appendChild(script);
 })();
