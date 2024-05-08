@@ -455,7 +455,7 @@ gtag('event', 'conversion',
     document.querySelector("head").appendChild(res);
   }
 
-  console.log(jsUrl);
+  console.log(jsUrl, 1);
 })();
 
 // AM-423908 xiaowu.ruan 2024.04.26
