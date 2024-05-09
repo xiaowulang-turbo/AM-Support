@@ -531,7 +531,6 @@ Calendly.initBadgeWidget(
   document.body.appendChild(script);
 })();
 
-<<<<<<< HEAD
 // AM-424377 xiaowu.ruan 2024.05.06
 (function () {
   var b = function () {
@@ -547,8 +546,10 @@ Calendly.initBadgeWidget(
       ? window.addEventListener("load", b)
       : window.attachEvent && window.attachEvent("onload", b)
     : b();
-=======
+})();
+
 // AM-430259 xiaowu.ruan 2024.05.08
+
 (function () {
   if (window.location.hash.indexOf("homes-for-sale-in") > -1) {
     const script = document.createElement("script");
@@ -578,5 +579,4 @@ Calendly.initBadgeWidget(
       return false;
     }
   }
->>>>>>> e17a6082eae0c144b71c7691d0ac6039bc5802fe
 })();
