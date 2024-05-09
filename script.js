@@ -530,3 +530,20 @@ Calendly.initBadgeWidget(
   };
   document.body.appendChild(script);
 })();
+
+// AM-424377 xiaowu.ruan 2024.05.06
+(function () {
+  var b = function () {
+    window.__AudioEyeSiteHash = "4e359a8c01f702a504f4c84c227c0017";
+    var a = document.createElement("script");
+    a.src = "https://wsmcdn.audioeye.com/aem.js";
+    a.type = "text/javascript";
+    a.setAttribute("async", "");
+    document.getElementsByTagName("body")[0].appendChild(a);
+  };
+  "complete" !== document.readyState
+    ? window.addEventListener
+      ? window.addEventListener("load", b)
+      : window.attachEvent && window.attachEvent("onload", b)
+    : b();
+})();
