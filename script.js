@@ -531,6 +531,7 @@ Calendly.initBadgeWidget(
   document.body.appendChild(script);
 })();
 
+<<<<<<< HEAD
 // AM-424377 xiaowu.ruan 2024.05.06
 (function () {
   var b = function () {
@@ -546,4 +547,36 @@ Calendly.initBadgeWidget(
       ? window.addEventListener("load", b)
       : window.attachEvent && window.attachEvent("onload", b)
     : b();
+=======
+// AM-430259 xiaowu.ruan 2024.05.08
+(function () {
+  if (window.location.hash.indexOf("homes-for-sale-in") > -1) {
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=AW-16489748952";
+    script.async = true;
+    document.body.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "AW-16489748952");
+    gtag("config", "AW-16489748952/1fpRCP6ilqoZENiz9rY9", {
+      phone_conversion_number: "[+1(916) 302-7655|tel:+19163027655]",
+    });
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof url != "undefined") {
+          window.location = url;
+        }
+      };
+      gtag("event", "conversion", {
+        send_to: "AW-16489748952/K8zzCPam_6kZENiz9rY9",
+        event_callback: callback,
+      });
+      return false;
+    }
+  }
+>>>>>>> e17a6082eae0c144b71c7691d0ac6039bc5802fe
 })();
