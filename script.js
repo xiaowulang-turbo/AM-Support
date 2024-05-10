@@ -478,16 +478,16 @@ gtag('event', 'conversion',
 })();
 
 // AM-425741 xiaowu.ruan 2024.04.30
-export default {
-  mounted() {
-    Util.getAsyncDom({
-      selector: "body .info.template5 .desc h2",
-      all: false,
-    }).then((res) => {
-      console.log(res);
-    });
-  },
-};
+// export default {
+//   mounted() {
+//     Util.getAsyncDom({
+//       selector: "body .info.template5 .desc h2",
+//       all: false,
+//     }).then((res) => {
+//       console.log(res);
+//     });
+//   },
+// };
 
 /*
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -580,3 +580,79 @@ Calendly.initBadgeWidget(
     }
   }
 })();
+
+// AM-431687 xiaowu.ruan 2024.05.10
+// export default {
+//   mounted() {
+//     Util.getAsyncDom({
+//       selector: "body .md-header.template6 .header-container .logo",
+//       all: false,
+//     }).then((res) => {
+//       const element = document.createElement("div");
+//       element.innerHTML = `
+//       <div class="custom-container" style="width:160px;margin-left:20px;flex-direction: column;
+//     display: flex;">
+//           <a
+//             href="tel:+1(817) 845-5567"
+//             class="phone-container"
+//             target="_top"
+//             rel="noopener noreferrer"
+//             style="font-size:12px !important"
+//           >
+//             <span class="iconfont icon-call-small"></span>
+//             <span class="des" style="font-size:12px !important">
+//               +1(817) 845-5567
+//             </span>
+//           </a>
+//           <a
+//             href="mailto:sharonyeary@gmail.com"
+//             class="email-container"
+//             rel="noopener noreferrer"
+//             style="display:flex"
+//           >
+//             <span class="iconfont icon-agent-email"></span>
+//             <span class="custom-des" style="font-size:12px !important">
+//               sharonyeary@gmail.com
+//             </span>
+//           </a>
+//         </div>`;
+//       res.appendChild(element);
+//     });
+//   },
+// };
+
+document
+  .querySelector(".page-editor")
+  .__vue__.menuData.menus[2].items[1].items.forEach(
+    (element) => (element.name = element.name.slice(0, element.name.length - 9))
+  );
+document.querySelector(".page-editor").__vue__.hiddenMenus;
+
+// export default {
+//   mounted() {
+//     Util.getAsyncDom({
+//       selector: ".custom-svg",
+//       all: false,
+//     }).then((res) => {
+//       res.addEventListener('click',function(event){
+//         window.location.href = "https://aurhomesgroup.com/our-areas/pearland";
+//       })
+//     });
+//   },
+// };
+
+export default {
+  mounted() {
+    Util.getAsyncDom({
+      selector: ".house-provided",
+      all: true,
+    }).then((res) => {
+      console.log(1, res);
+      Array.from(res).forEach((element) => {
+        element.innerText.includes("CLAIRE THACKRAY")
+          ? element
+          : (element.innerText = "Courtesy of The Bahamas MLS");
+      });
+    });
+  },
+};
