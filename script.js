@@ -620,13 +620,16 @@ Calendly.initBadgeWidget(
 //     });
 //   },
 // };
-
+// (element.name = element.name.slice(0, element.name.length - 9))
 document
   .querySelector(".page-editor")
-  .__vue__.menuData.menus[2].items[1].items.forEach(
-    (element) => (element.name = element.name.slice(0, element.name.length - 9))
-  );
+  .__vue__.menuData.menus[2].items[1].items.forEach((element) => {
+    Object.assign(element, {
+      name: element.name.slice(0, element.name.length - 9),
+    });
+  });
 document.querySelector(".page-editor").__vue__.hiddenMenus;
+document.querySelector(".page-editor").__vue__.menuData;
 
 // export default {
 //   mounted() {
@@ -656,3 +659,35 @@ export default {
     });
   },
 };
+
+// export default {
+//   mounted() {
+//     Util.getAsyncDom({
+//       selector: "body .",
+//       all: false,
+//     }).then((res) => {
+//       console.log(1, res);
+//     });
+//   },
+// };
+
+// export default {
+//   mounted() {
+//     Util.getAsyncDom({
+//       selector: "body .step-description span:nth-child(2)",
+//       all: true,
+//     }).then((res) => {
+//       console.log(1, res);
+//       console.log(res[1]);
+//       console.log(res[1].innerText);
+//       if (res.length > 2) {
+//         console.log(res[1].childNodes);
+//         //res[1].childNodes[1].textContent = test;
+//         res = Array.from(res);
+//         console.log(res[1]);
+//         //res[1].textContent = 123;
+//         console.log(res);
+//       }
+//     });
+//   },
+// };
